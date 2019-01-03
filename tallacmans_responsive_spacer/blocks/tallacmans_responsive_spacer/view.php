@@ -31,3 +31,12 @@
    }
  }
 </style>
+
+<?php
+$c = Page::getCurrentPage(); //  copied this code from another source. but Im not disabling because it works in edit mode.
+if ($c->isEditMode()) {
+    ?>
+    <div class="ccm-edit-mode-disabled-item" style="<?php echo isset($width) ? "width: $width;" : '' ?><?php echo isset($height) ? "height: $height;" : '' ?>">
+        <div style="padding: 5px 0px 5px 0px"><?php echo t('Responsive Spacer - edit mode') ?></div>
+    </div>
+<?php } ?>

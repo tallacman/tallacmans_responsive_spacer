@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<schema version="0.3">
+    <table name="btTallacmansResponsiveSpacer">
+        <field name="bID" type="I">
+            <key/>
+            <unsigned/>
+        </field>
+        <field name="vsScreen" type="C"></field>
+        <field name="smScreen" type="C"></field>
+        <field name="mdScreen" type="C"></field>
+        <field name="dtScreen" type="C"></field>
+        <field name="vlScreen" type="C"></field>
+    </table>
+</schema>

@@ -14,7 +14,7 @@ class Controller extends Package
 
     protected $appVersionRequired = '9.0.0';
 
-    protected $pkgVersion = '2.0.2';
+    protected $pkgVersion = '2.0.3';
 
     public function getPackageName()
     {
@@ -23,7 +23,8 @@ class Controller extends Package
 
     public function getPackageDescription()
     {
-        return t('Dynamically varies your vertical spacing depending on screen width, with per-breakpoint unit control.');
+        return t('Dynamically varies your vertical spacing depending on screen ' .
+            'width, with per-breakpoint unit control.');
     }
 
     public function install()

@@ -87,7 +87,7 @@ class Controller extends BlockController
     // CSS generation
     // ---------------------------------------------------------------
 
-    private function generate_styles(): string
+    private function generateStyles(): string
     {
         $id  = (int) $this->bID;
         $sel = "#tallacmans-responsive-spacer-{$id}";
@@ -119,47 +119,47 @@ class Controller extends BlockController
     // Lifecycle hooks
     // ---------------------------------------------------------------
 
-    public function on_start()
+    public function onStart()
     {
         $this->set('app', $this->app);
     }
 
     public function view()
     {
-        $this->addHeaderItem('<style>' . $this->generate_styles() . '</style>');
+        $this->addHeaderItem('<style>' . $this->generateStyles() . '</style>');
     }
 
     public function add()
     {
         $this->addEdit();
-        $this->set('hUnits',    'vw');
-        $this->set('Hbase',     '5');
-        $this->set('smScreen',  '');
-        $this->set('smUnits',   'vw');
-        $this->set('mdScreen',  '');
-        $this->set('mdUnits',   'vw');
-        $this->set('lgScreen',  '');
-        $this->set('lgUnits',   'vw');
-        $this->set('xlScreen',  '');
-        $this->set('xlUnits',   'vw');
+        $this->set('hUnits', 'vw');
+        $this->set('Hbase', '5');
+        $this->set('smScreen', '');
+        $this->set('smUnits', 'vw');
+        $this->set('mdScreen', '');
+        $this->set('mdUnits', 'vw');
+        $this->set('lgScreen', '');
+        $this->set('lgUnits', 'vw');
+        $this->set('xlScreen', '');
+        $this->set('xlUnits', 'vw');
         $this->set('xxlScreen', '');
-        $this->set('xxlUnits',  'vw');
+        $this->set('xxlUnits', 'vw');
     }
 
     public function edit()
     {
-        $this->set('Hbase',     $this->Hbase);
-        $this->set('hUnits',    $this->hUnits    ?: 'vw');
-        $this->set('smScreen',  $this->smScreen);
-        $this->set('smUnits',   $this->smUnits   ?: 'vw');
-        $this->set('mdScreen',  $this->mdScreen);
-        $this->set('mdUnits',   $this->mdUnits   ?: 'vw');
-        $this->set('lgScreen',  $this->lgScreen);
-        $this->set('lgUnits',   $this->lgUnits   ?: 'vw');
-        $this->set('xlScreen',  $this->xlScreen);
-        $this->set('xlUnits',   $this->xlUnits   ?: 'vw');
+        $this->set('Hbase', $this->Hbase);
+        $this->set('hUnits', $this->hUnits    ?: 'vw');
+        $this->set('smScreen', $this->smScreen);
+        $this->set('smUnits', $this->smUnits   ?: 'vw');
+        $this->set('mdScreen', $this->mdScreen);
+        $this->set('mdUnits', $this->mdUnits   ?: 'vw');
+        $this->set('lgScreen', $this->lgScreen);
+        $this->set('lgUnits', $this->lgUnits   ?: 'vw');
+        $this->set('xlScreen', $this->xlScreen);
+        $this->set('xlUnits', $this->xlUnits   ?: 'vw');
         $this->set('xxlScreen', $this->xxlScreen);
-        $this->set('xxlUnits',  $this->xxlUnits  ?: 'vw');
+        $this->set('xxlUnits', $this->xxlUnits  ?: 'vw');
         $this->addEdit();
     }
 

@@ -1,3 +1,6 @@
+### 2.0.3   - June 24, 2026  
+- Bumped package version from 2.0.2 to 2.0.3. Passed linters
+--------
 ### 2.0.2   - June 23, 2026  
 - Bumped package version from 2.0.1 to 2.0.2.
 --------

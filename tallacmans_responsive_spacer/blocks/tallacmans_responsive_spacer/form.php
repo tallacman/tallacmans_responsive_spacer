@@ -114,7 +114,7 @@
     ];
     ?>
 
-    <?php foreach ($breakpoints as $bp): ?>
+    <?php foreach ($breakpoints as $bp) : ?>
     <div class="trs-breakpoint <?php echo $bp['rowClass']; ?>">
 
         <label class="trs-label">
@@ -122,7 +122,7 @@
             <span class="trs-badge <?php echo $bp['badgeClass'] ?? ''; ?>">
                 <?php echo $bp['badge']; ?>
             </span>
-            <?php if ($bp['required']): ?>
+            <?php if ($bp['required']) : ?>
                 <span class="text-danger" title="<?php echo t('Required'); ?>"> *</span>
             <?php endif; ?>
         </label>
@@ -148,7 +148,7 @@
             ); ?>
         </div>
 
-        <?php if (!empty($bp['hint'])): ?>
+        <?php if (!empty($bp['hint'])) : ?>
             <small class="text-muted"><?php echo $bp['hint']; ?></small>
         <?php endif; ?>
 

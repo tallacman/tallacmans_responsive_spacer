@@ -1,5 +1,9 @@
-### 2.0.3   - June 24, 2026  
-- Bumped package version from 2.0.2 to 2.0.3. Passed linters
+### 2.0.5   - June 24, 2026
+- Replaced deprecated Database facade with Connection class via app container.
+- Switched executeQuery() to executeStatement() for UPDATE/DROP statements (Doctrine DBAL 3.x compliance).
+- Replaced legacy helper/validation/error string alias with ErrorList::class.
+- Changed btFieldsRequired visibility from public to protected to match parent.
+- Changed sanitizeUnit(), parseHeight(), generateStyles() from private to protected for extensibility.
 --------
 ### 2.0.2   - June 23, 2026  
 - Bumped package version from 2.0.1 to 2.0.2.

@@ -3,8 +3,8 @@
 namespace Concrete\Package\TallacmansResponsiveSpacer;
 
 use Concrete\Core\Block\BlockType\BlockType;
+use Concrete\Core\Database\Connection\Connection;
 use Concrete\Core\Package\Package;
-use Concrete\Core\Support\Facade\Database;
 
 defined('C5_EXECUTE') or exit('Access Denied.');
 
@@ -14,7 +14,7 @@ class Controller extends Package
 
     protected $appVersionRequired = '9.0.0';
 
-    protected $pkgVersion = '2.0.3';
+    protected $pkgVersion = '2.0.5';
 
     public function getPackageName()
     {
@@ -45,12 +45,12 @@ class Controller extends Package
 
         // Migrate existing rows: copy hUnits into the new per-breakpoint unit
         // columns so old blocks keep their previously-saved unit.
-        $db = Database::connection();
+        $db = $this->app->make(Connection::class);
 
         $unitCols = ['smUnits', 'mdUnits', 'lgUnits', 'xlUnits', 'xxlUnits'];
         foreach ($unitCols as $col) {
             // Only back-fill rows where the column is still NULL
-            $db->executeQuery(
+            $db->executeStatement(
                 "UPDATE btTallacmansResponsiveSpacer
                     SET {$col} = hUnits
                   WHERE {$col} IS NULL OR {$col} = ''"
@@ -62,7 +62,7 @@ class Controller extends Package
     {
         parent::uninstall();
 
-        $db = Database::connection();
-        $db->executeQuery('DROP TABLE IF EXISTS btTallacmansResponsiveSpacer');
+        $db = $this->app->make(Connection::class);
+        $db->executeStatement('DROP TABLE IF EXISTS btTallacmansResponsiveSpacer');
     }
 }

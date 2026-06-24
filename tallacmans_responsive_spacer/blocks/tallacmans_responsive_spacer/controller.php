@@ -5,10 +5,11 @@ namespace Concrete\Package\TallacmansResponsiveSpacer\Block\TallacmansResponsive
 defined('C5_EXECUTE') or exit('Access Denied.');
 
 use Concrete\Core\Block\BlockController;
+use Concrete\Core\Error\ErrorList\ErrorList;
 
 class Controller extends BlockController
 {
-    public $btFieldsRequired = ['Hbase', 'hUnits'];
+    protected $btFieldsRequired = ['Hbase', 'hUnits'];
 
     protected $btTable = 'btTallacmansResponsiveSpacer';
 
@@ -62,7 +63,7 @@ class Controller extends BlockController
      * Validate and return a safe CSS unit string.
      * Falls back to the supplied $default (or 'px') for legacy NULL rows.
      */
-    private function sanitizeUnit(?string $unit, string $default = 'px'): string
+    protected function sanitizeUnit(?string $unit, string $default = 'px'): string
     {
         $unit = trim((string) $unit);
         return in_array($unit, $this->allowedUnits, true) ? $unit : $default;
@@ -72,7 +73,7 @@ class Controller extends BlockController
      * Parse a numeric height value, allowing up to 2 decimal places
      * (needed for rem, e.g. 1.5rem).  Returns '' for blank/invalid.
      */
-    private function parseHeight(string $raw): string
+    protected function parseHeight(string $raw): string
     {
         $raw = trim(str_replace(',', '.', $raw));
         if ($raw === '') {
@@ -87,7 +88,7 @@ class Controller extends BlockController
     // CSS generation
     // ---------------------------------------------------------------
 
-    private function generateStyles(): string
+    protected function generateStyles(): string
     {
         $id  = (int) $this->bID;
         $sel = "#tallacmans-responsive-spacer-{$id}";
@@ -196,7 +197,7 @@ class Controller extends BlockController
 
     public function validate($args)
     {
-        $e = $this->app->make('helper/validation/error');
+        $e = $this->app->make(ErrorList::class);
 
         $checks = [
             'Hbase'     => t('Base Height'),

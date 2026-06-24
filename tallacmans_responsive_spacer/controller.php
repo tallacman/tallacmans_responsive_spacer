@@ -1,15 +1,20 @@
-<?php namespace Concrete\Package\TallacmansResponsiveSpacer;
+<?php
 
-use Package;
-use BlockType;
+namespace Concrete\Package\TallacmansResponsiveSpacer;
 
-defined('C5_EXECUTE') or die("Access Denied.");
+use Concrete\Core\Block\BlockType\BlockType;
+use Concrete\Core\Package\Package;
+use Concrete\Core\Support\Facade\Database;
+
+defined('C5_EXECUTE') or exit('Access Denied.');
 
 class Controller extends Package
 {
     protected $pkgHandle = 'tallacmans_responsive_spacer';
-    protected $appVersionRequired = '5.7.5.5';
-    protected $pkgVersion = '0.9.0';
+
+    protected $appVersionRequired = '9.0.0';
+
+    protected $pkgVersion = '2.0.2';
 
     public function getPackageName()
     {
@@ -18,19 +23,45 @@ class Controller extends Package
 
     public function getPackageDescription()
     {
-        return t('Changes height depending on your screen size.');
+        return t('Dynamically varies your vertical spacing depending on screen width, with per-breakpoint unit control.');
     }
 
     public function install()
     {
         $pkg = parent::install();
-	    $btHandles = array (
-   'tallacmans_responsive_spacer',
-);
-	    foreach($btHandles as $btHandle){
-	        if (!BlockType::getByHandle($btHandle)) {
+
+        $btHandles = ['tallacmans_responsive_spacer'];
+        foreach ($btHandles as $btHandle) {
+            if (! BlockType::getByHandle($btHandle)) {
                 BlockType::installBlockType($btHandle, $pkg);
             }
-	    }
+        }
+    }
+
+    public function upgrade()
+    {
+        parent::upgrade();
+
+        // Migrate existing rows: copy hUnits into the new per-breakpoint unit
+        // columns so old blocks keep their previously-saved unit.
+        $db = Database::connection();
+
+        $unitCols = ['smUnits', 'mdUnits', 'lgUnits', 'xlUnits', 'xxlUnits'];
+        foreach ($unitCols as $col) {
+            // Only back-fill rows where the column is still NULL
+            $db->executeQuery(
+                "UPDATE btTallacmansResponsiveSpacer
+                    SET {$col} = hUnits
+                  WHERE {$col} IS NULL OR {$col} = ''"
+            );
+        }
+    }
+
+    public function uninstall()
+    {
+        parent::uninstall();
+
+        $db = Database::connection();
+        $db->executeQuery('DROP TABLE IF EXISTS btTallacmansResponsiveSpacer');
     }
 }

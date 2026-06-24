@@ -1,14 +1,25 @@
-<?xml version="1.0"?>
-<schema version="0.3">
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+    xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 https://concretecms.github.io/doctrine-xml/doctrine-xml-0.5.xsd"
+>
     <table name="btTallacmansResponsiveSpacer">
-        <field name="bID" type="I">
-            <key/>
+        <field name="bID" type="integer">
             <unsigned/>
+            <key/>
         </field>
-        <field name="vsScreen" type="C"></field>
-        <field name="smScreen" type="C"></field>
-        <field name="mdScreen" type="C"></field>
-        <field name="dtScreen" type="C"></field>
-        <field name="vlScreen" type="C"></field>
+        <field name="Hbase" type="string" size="8"/>
+        <field name="hUnits" type="string" size="8"/>
+        <field name="smScreen" type="string" size="8"/>
+        <field name="smUnits" type="string" size="8"/>
+        <field name="mdScreen" type="string" size="8"/>
+        <field name="mdUnits" type="string" size="8"/>
+        <field name="lgScreen" type="string" size="8"/>
+        <field name="lgUnits" type="string" size="8"/>
+        <field name="xlScreen" type="string" size="8"/>
+        <field name="xlUnits" type="string" size="8"/>
+        <field name="xxlScreen" type="string" size="8"/>
+        <field name="xxlUnits" type="string" size="8"/>
     </table>
 </schema>

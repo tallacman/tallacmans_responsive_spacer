@@ -1,0 +1,37 @@
+.tallacmans-responsive-spacer {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+}
+
+/* Edit-mode label */
+.tallacmans-responsive-spacer__edit-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 32px;
+    border: 1px dashed #fa005a;
+    background: repeating-linear-gradient(
+        -45deg,
+        #fff8fb,
+        #fff8fb 6px,
+        #ffe4ef 6px,
+        #ffe4ef 12px
+    );
+    border-radius: 3px;
+}
+
+.tallacmans-responsive-spacer__edit-label span {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fa005a;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid #fa005a;
+}
